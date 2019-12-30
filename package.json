@@ -1,0 +1,15 @@
+{
+  "name": "@m1yh3m/pad.string.node.lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.5.0"
+  }
+}
