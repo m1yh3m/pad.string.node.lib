@@ -1,4 +1,4 @@
-const PaddableString = require('../pad')
+const PaddableString = require('../paddable')
 
 describe('PaddableString', () => {
     it('is a function of arity 1', () => {
