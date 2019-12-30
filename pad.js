@@ -1,43 +1,55 @@
+const {
+    around,
+    aroundAsymmetric,
+    aroundAsymmetricOnce,
+    aroundOnce,
+    left,
+    leftOnce,
+    right,
+    rightOnce,
+    isNotString
+} = require('./lib')
+
 class PaddableString {
     constructor(input) {
-        if (typeof input !== 'string') {
+        if (isNotString(input)) {
             throw new TypeError(`PARAM "input" should be of type "string".`)
         }
         this.value = input
     }
     rightOnce(ch) {
-        this.value = this.value + ch
+        this.value = rightOnce(ch, this.value)
         return this
     }
     leftOnce(ch) {
-        this.value = ch + this.value
+        this.value = leftOnce(ch, this.value)
         return this
     }
     right(ch, times) {
-        this.value = this.value + Array(times).fill(ch).join('')
+        this.value = right(ch, times, this.value)
         return this
     }
     left(ch, times) {
-        this.value = Array(times).fill(ch).join('') + this.value
+        this.value = left(ch, times, this.value)
         return this
     }
     get() {
         return this.value
     }
     aroundOnce(ch) {
-        this.value = ch + this.value + ch
+        this.value = aroundOnce(ch, this.value)
         return this
     }
     around(ch, times) {
-        this.value = Array(times).fill(ch).join('') + this.value + Array(times).fill(ch).join('')
+        this.value = around(ch, times, this.value)
         return this
     }
     aroundAsymmetricOnce(prefix, suffix) {
-        this.value = prefix + this.value + suffix
+        this.value = aroundAsymmetricOnce(prefix, suffix, this.value)
         return this
     }
     aroundAsymmetric(prefix, ptimes, suffix, stimes) {
-        this.value = Array(ptimes).fill(prefix).join('') + this.value + Array(stimes).fill(suffix).join('')
+        this.value = aroundAsymmetric(prefix, ptimes, suffix, stimes, this.value)
         return this
     }
 }
