@@ -28,6 +28,18 @@ function right(ch, times, input) {
 function left(ch, times, input) {
     return Array(times).fill(ch).join('') + input
 }
+function segmentRight(ch, segmentLength, input) {
+    const strlen = input.length
+    const diff = strlen % segmentLength
+    const times = (segmentLength - diff) % segmentLength
+    return right(ch, times, input)
+}
+function segmentLeft(ch, segmentLength, input) {
+    const strlen = input.length
+    const diff = strlen % segmentLength
+    const times = (segmentLength - diff) % segmentLength
+    return left(ch, times, input)
+}
 
 module.exports = {
     around,
@@ -39,5 +51,7 @@ module.exports = {
     right,
     rightOnce,
     isString,
-    isNotString
+    isNotString,
+    segmentLeft,
+    segmentRight
 }

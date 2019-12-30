@@ -3,13 +3,14 @@ const {
     aroundAsymmetric,
     aroundAsymmetricOnce,
     aroundOnce,
-    get,
     left,
     leftOnce,
     right,
     rightOnce,
     isString,
-    isNotString
+    isNotString,
+    segmentLeft,
+    segmentRight
 } = require('../lib')
 
 describe('padding library', () => {
@@ -72,5 +73,57 @@ describe('padding library', () => {
         const actual = isNotString(input)
         const expected = false
         expect(actual).toEqual(expected)
+    })
+    describe('segmentLeft()', () => {
+        it('one', () => {
+            const input = 'input'
+            const actual = segmentLeft('=', 4, input)
+            const expected = '===' + input
+            expect(actual).toEqual(expected)
+        })
+        it('two', () => {
+            const input = 'inputs'
+            const actual = segmentLeft('=', 4, input)
+            const expected = '==' + input
+            expect(actual).toEqual(expected)
+        })
+        it('three', () => {
+            const input = 'inputss'
+            const actual = segmentLeft('=', 4, input)
+            const expected = '=' + input
+            expect(actual).toEqual(expected)
+        })
+        it('four', () => {
+            const input = 'inpu'
+            const actual = segmentLeft('=', 4, input)
+            const expected = input
+            expect(actual).toEqual(expected)
+        })
+    })
+    describe('segmentRight()', () => {
+        it('one', () => {
+            const input = 'input'
+            const actual = segmentRight('=', 4, input)
+            const expected = input + '==='
+            expect(actual).toEqual(expected)
+        })
+        it('two', () => {
+            const input = 'inputs'
+            const actual = segmentRight('=', 4, input)
+            const expected = input + '=='
+            expect(actual).toEqual(expected)
+        })
+        it('three', () => {
+            const input = 'inputss'
+            const actual = segmentRight('=', 4, input)
+            const expected = input + '='
+            expect(actual).toEqual(expected)
+        })
+        it('four', () => {
+            const input = 'inpu'
+            const actual = segmentRight('=', 4, input)
+            const expected = input
+            expect(actual).toEqual(expected)
+        })
     })
 })

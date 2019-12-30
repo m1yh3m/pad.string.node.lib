@@ -7,7 +7,9 @@ const {
     leftOnce,
     right,
     rightOnce,
-    isNotString
+    isNotString,
+    segmentLeft,
+    segmentRight
 } = require('./lib')
 
 class PaddableString {
@@ -50,6 +52,14 @@ class PaddableString {
     }
     aroundAsymmetric(prefix, ptimes, suffix, stimes) {
         this.value = aroundAsymmetric(prefix, ptimes, suffix, stimes, this.value)
+        return this
+    }
+    segmentLeft(ch, segmentLength) {
+        this.value = segmentLeft(ch, segmentLength, this.value)
+        return this
+    }
+    segmentRight(ch, segmentLength) {
+        this.value = segmentRight(ch, segmentLength, this.value)
         return this
     }
 }
